@@ -1,0 +1,282 @@
+:root {
+    --moss-green: #254E35;
+    --white: #FFFFFF;
+    --dark-moss: #1A3A26;
+    --text-dark: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signup-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.signup-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../../assets/images/building.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    z-index: -2;
+}
+
+.signup-container::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(37, 78, 53, 0.7);;
+    z-index: -1;
+}
+
+.signup-form-box {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.signup-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.signup-logo img {
+    height: 100px;
+    width: auto;
+}
+
+.signup-logo h2 {
+    color: var(--moss-green);
+    margin-top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.signup-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.input-group {
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--moss-green);
+    box-shadow: 0 0 0 3px rgba(37, 78, 53, 0.1);
+}
+
+.input-group.fullname {
+    grid-column: span 2;
+}
+
+.input-group.password-group {
+    grid-column: span 2;
+    margin-bottom: 5px;
+}
+
+.input-group.confirm-password-group {
+    grid-column: span 2;
+    margin-bottom: 15px;
+}
+
+.terms-checkbox {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.terms-checkbox label {
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.terms-checkbox label a {
+    color: var(--moss-green);
+    text-decoration: none;
+    font-weight: 500;  /* Make it bold like Forgot Password */
+}
+
+.terms-checkbox label a:hover {
+    text-decoration: underline;  /* Add underline on hover */
+}
+
+.terms-checkbox input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.submit-btn {
+    grid-column: span 2;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--moss-green);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0
+}
+
+.submit-btn:hover {
+    background-color: var(--dark-moss);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 78, 53, 0.2);
+}
+
+.form-footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.form-footer a {
+    color: var(--moss-green);
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.signup-error-message {
+    color: #ff0033;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 480px) {
+    .signup-form-box {
+        padding: 30px;
+        margin: 0 15px;
+    }
+    
+    .signup-logo img {
+        height: 60px;
+    }
+    
+    .signup-heading {
+        font-size: 20px;
+    }
+}
+
+.course-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1em;
+    color: var(--text-dark);
+}
+
+.course-select:hover {
+    border-color: var(--moss-green);
+}
+
+.course-select:focus {
+    outline: none;
+    border-color: var(--moss-green);
+    box-shadow: 0 0 0 3px rgba(37, 78, 53, 0.1);
+}
+
+/* For Firefox */
+.course-select option:hover,
+.course-select option:focus,
+.course-select option:checked {
+    background-color: var(--moss-green);
+    color: var(--white);
+    box-shadow: 0 0 10px 100px var(--moss-green) inset;
+}
+
+/* For webkit browsers */
+.course-select option:hover {
+    background-color: var(--moss-green) !important;
+    color: var(--white) !important;
+}
+
+/* Remove default select styling in IE */
+.course-select::-ms-expand {
+    display: none;
+}
+
+/* Style the options when opened */
+.course-select option {
+    padding: 12px;
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+.course-select option:hover {
+    background-color: var(--moss-green);
+    color: var(--white);
+}
+
+.input-group input[type="number"]::-webkit-inner-spin-button,
+.input-group input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-group input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}

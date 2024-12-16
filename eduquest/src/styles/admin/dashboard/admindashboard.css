@@ -1,0 +1,522 @@
+:root {
+    --moss-green: #254e35;
+    --white: #FFFFFF;
+    --dark-moss: #1A3A26;
+    --text-dark: #333333;
+    --light-gray: #f5f5f5;
+    --border-color: #CCCCCC;
+    --notification-red: #e74c3c;
+}
+
+.admin-dashboard {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.admin-dashboard::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../../assets/images/building.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+    z-index: -2;
+}
+
+.admin-dashboard::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(37, 78, 53, 0.7);
+    z-index: -1;
+}
+
+.admin-dashboard header {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 70px;
+    box-sizing: border-box;
+}
+
+.admin-dashboard .main-content {
+    transition: margin-left 0.3s ease;
+    margin-left: 250px;
+    margin-top: 70px;
+    padding: 30px;
+    background: transparent;
+    min-height: calc(100vh - 70px);
+    overflow-y: auto;
+    height: calc(100vh - 70px);
+    box-sizing: border-box;
+}
+
+.admin-dashboard .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+    padding-bottom: 70px;
+}
+
+.admin-dashboard .dashboard-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.admin-dashboard .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.admin-dashboard .dashboard-card h3 {
+    color: var(--moss-green);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.admin-dashboard .dashboard-card h3 {
+    color: var(--moss-green);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.admin-dashboard .dashboard-card p {
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.admin-dashboard .new-indicator {
+    background-color: #4CAF50;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.admin-dashboard .urgent-indicator {
+    background-color: #ff4444;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+/* Add burger menu styles */
+.admin-dashboard .burger-menu {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--moss-green);
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-dashboard .sidebar {
+    background: rgba(255, 255, 255, 0.1); /* Change to transparent white */
+    backdrop-filter: blur(10px); /* Add blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    width: 250px;
+    height: calc(100vh - 70px);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Make border more subtle */
+    padding: 20px 0;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add these new styles to remove scrollbar completely */
+.admin-dashboard .sidebar::-webkit-scrollbar,
+.admin-dashboard .sidebar nav::-webkit-scrollbar,
+.admin-dashboard .sidebar nav ul::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.admin-dashboard .sidebar,
+.admin-dashboard .sidebar nav,
+.admin-dashboard .sidebar nav ul {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.admin-dashboard .sidebar nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.admin-dashboard .sidebar.closed {
+    transform: translateX(-250px);
+}
+.admin-dashboard .sidebar.closed + .main-content {
+    margin-left: 0;
+}
+
+.admin-dashboard .sidebar-category {
+    color: var(--white);
+    opacity: 0.7;
+    padding: 20px 25px 10px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.admin-dashboard .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    overflow: hidden;
+}
+
+.admin-dashboard .sidebar nav ul li {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.admin-dashboard .sidebar nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.admin-dashboard .sidebar nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-dashboard .sidebar nav ul li a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.admin-dashboard .sidebar nav ul li a i {
+    color: var(--white);
+    width: 20px;
+    text-align: center;
+}
+
+/* Update logo container */
+.admin-dashboard .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 70px;
+    margin-top: 30px;
+    margin-left: -260px;
+}
+
+.admin-dashboard .logo img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.admin-dashboard .logo h1 {
+    font-size: 1.45rem; /* Slightly reduced */
+    color: var(--moss-green);
+    margin: 0;
+    font-weight: 800; /* Reduced weight to match design */
+    line-height: 1;
+    margin-top: -6px; /* Reduced to align better */
+    letter-spacing: 0.2px; /* Added letter spacing */
+}
+
+/* Add user profile styles */
+.admin-dashboard .user-profile {
+    position: relative;  /* Add this for dropdown positioning */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-dashboard .profile-pic {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.admin-dashboard .profile-pic:hover {
+    opacity: 0.8;
+}
+
+.admin-dashboard .profile-pic i {
+    font-size: 30px;  /* Reduced from default size */
+    color: #254e35;   /* Your moss-green color */
+}
+.admin-dashboard .admin-profile-dropdown {
+    position: relative;
+}
+
+.admin-dashboard .admin-dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+    font-size: 0.8rem; /* Add this */
+}
+
+.admin-dashboard .admin-dropdown-content {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 5px 0;
+    display: none;
+    z-index: 1000;
+}
+
+.admin-dashboard .admin-dropdown-content.active {
+    display: block;
+}
+
+.admin-dashboard .admin-dropdown-content li {
+    list-style: none;
+}
+
+.admin-dashboard .admin-dropdown-content a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+
+.admin-dashboard .admin-dropdown-content .profile-button:hover {
+    background-color: rgba(37, 78, 53, 0.1); /* Light moss green background */
+    color: var(--moss-green);
+}
+
+.admin-dashboard .admin-dropdown-content .profile-button:hover i {
+    color: var(--moss-green);
+}
+
+.admin-dashboard .admin-dropdown-content .logout-button:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+.admin-dashboard .admin-dropdown-content .logout-button:hover i {
+    color: #e74c3c;
+}
+
+
+.admin-dashboard .admin-dropdown-content button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.admin-dashboard .admin-dropdown-content button i {
+    width: 20px;
+    text-align: center;
+    color: inherit;
+}
+
+
+
+.admin-dashboard #userName {
+    color: var(--text-dark);
+    font-weight: 500; /* Add this */
+}
+
+.admin-dashboard footer {
+    transition: left 0.3s ease;
+    background: transparent;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 250px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.admin-dashboard footer a {
+    color: white;
+    text-decoration: none;
+}
+.admin-dashboard .sidebar.closed ~ footer {
+    left: 0;
+}
+
+.admin-dashboard .dashboard-card .view-all {
+    margin-top: auto;
+    padding-top: 10px;
+    color: var(--moss-green);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 4px;
+}
+
+.admin-dashboard .dashboard-card .view-all:hover {
+    background-color: var(--moss-green);
+    color: white;
+    transform: translateX(5px);
+}
+
+.admin-dashboard .notification-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #254e35;
+}
+
+.admin-dashboard .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--notification-red);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    /* Hide by default */
+    display: none;
+}
+
+/* Only show when there are notifications */
+.admin-dashboard .notification-count.has-notifications {
+    display: block;
+}
+
+.admin-dashboard .search-bar {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 20px;
+    position: relative;
+}
+
+.admin-dashboard .search-bar input {
+    width: 100%;
+    padding: 8px 15px;
+    padding-right: 40px; /* Space for the search icon */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background: white;
+}
+.admin-dashboard .search-bar button {
+    position: absolute;
+    right: 10px; /* Adjust position */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 5px; /* Add padding */
+}
+.admin-dashboard h2.page-title {
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+/* Sidebar Profile Styles */
+.admin-dashboard .sidebar-profile {
+    margin-top: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-dashboard .sidebar-profile .profile-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.admin-dashboard .sidebar-profile .profile-image i {
+    color: var(--white);
+    font-size: 2rem;
+}
+
+.admin-dashboard .sidebar-profile .profile-info {
+    width: 100%;
+}
+
+.admin-dashboard .sidebar-profile .profile-info h3 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.admin-dashboard .sidebar-profile .profile-info p {
+    color: var(--white);
+    opacity: 0.7;
+    font-size: 0.9rem;
+    margin: 0;
+}

@@ -1,0 +1,181 @@
+.settings-content {
+    padding: 20px;
+}
+
+.settings-section {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.settings-section h3 {
+    color: var(--light-moss);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.settings-group {
+    margin-bottom: 25px;
+}
+
+.settings-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.settings-group input[type="text"],
+.settings-group input[type="email"],
+.settings-group input[type="password"],
+.settings-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.settings-group input:focus,
+.settings-group select:focus {
+    border-color: var(--light-moss);
+    outline: none;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: var(--light-moss);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+.settings-btn {
+    background-color: var(--light-moss);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.settings-btn:hover {
+    background-color: var(--hover-moss);
+}
+
+.settings-btn.cancel {
+    background-color: #dc3545;
+    margin-right: 10px;
+}
+
+.settings-btn.cancel:hover {
+    background-color: #c82333;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.notification-setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.notification-setting span {
+    color: #2c3e50;
+}
+
+:root {
+    --light-moss: #4a8b67;
+    --hover-moss: #3a7355;
+    --bg-color: #ffffff;
+    --text-color: #2c3e50;
+    --section-bg: #ffffff;
+}
+
+/* Dark Mode Styles */
+[data-theme='dark'] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --section-bg: #2d2d2d;
+}
+
+/* Update these existing classes */
+.settings-content {
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.settings-section {
+    background: var(--section-bg);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.notification-setting span {
+    color: var(--text-color);
+}
+
+.settings-group label {
+    color: var(--text-color);
+}
+
+.settings-group select {
+    background-color: var(--section-bg);
+    color: var(--text-color);
+}
+
+.settings-group {
+    margin-bottom: 25px;
+}
