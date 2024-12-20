@@ -5,6 +5,11 @@ import logo from '../../../assets/images/uz.png';
 import InternshipModal from '../modal/intership';  // This is for the internship modal
 import ProfileModal from '../profile/profilemodal'; // Import the ProfileModal
 import NotificationModal from '../notification/notificationmodal';
+import PendingInternshipModal from '../modal/internship_pending';
+import PendingInHouseModal from '../modal/inhouse_pending';
+import PendingOffCampusModal from '../modal/offcampus_pending';
+import InHouseModal from '../modal/inhouse';
+
 
 
 const AdminDashboard = () => {
@@ -24,6 +29,7 @@ const AdminDashboard = () => {
     const [isInternshipModalOpen, setIsInternshipModalOpen] = useState(false);
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const [modalTitle, setModalTitle] = useState('');
+    
 
     const [profileData, setProfileData] = useState({
         fullName: 'Admin Name',
@@ -71,7 +77,9 @@ const AdminDashboard = () => {
                         { department: "SCJ Department", status: "Approved", date: "09/15/24" }
                     ]
                 });
+                setIsInternshipModalOpen(true);
                 break;
+    
             case 'inhouse':
                 title = 'In-house Activity';
                 setInternshipData({
@@ -84,7 +92,10 @@ const AdminDashboard = () => {
                         { department: "In-house Report 2", status: "Reviewed", date: "09/18/24" }
                     ]
                 });
+                setIsModalOpen(true);
+                setActiveModal('inhouse');
                 break;
+    
             case 'offcampus':
                 title = 'Off-campus Activity';
                 setInternshipData({
@@ -97,12 +108,14 @@ const AdminDashboard = () => {
                         { department: "Off-campus Report 2", status: "Reviewed", date: "09/16/24" }
                     ]
                 });
+                setIsModalOpen(true);
+                setActiveModal('offcampus');
                 break;
+    
             default:
                 break;
         }
         setModalTitle(title);
-        setIsInternshipModalOpen(true);
     };
 
     useEffect(() => {
@@ -198,6 +211,7 @@ const AdminDashboard = () => {
         };
     }, [isNotificationModalOpen]);
         
+
 
     return (
         <div className="admin-dashboard">
@@ -402,6 +416,15 @@ const AdminDashboard = () => {
                     title={modalTitle}  // Use the dynamic title here
                     internshipData={internshipData}
                 />
+                {/* InHouse Modal */}
+                <InHouseModal 
+                    isOpen={isModalOpen && activeModal === 'inhouse'}
+                    onClose={() => {
+                        setIsModalOpen(false);
+                        setActiveModal(null);
+                    }}
+                    title={modalTitle}
+                 />
                 {/* Notification Modal */}
                 <NotificationModal 
                     isOpen={isNotificationModalOpen} 
@@ -415,8 +438,27 @@ const AdminDashboard = () => {
                     onSave={(updatedData) => {
                         setProfileData(updatedData);
                         setIsProfileModalOpen(false);
-                    }} 
+                    }}
                 />
+                {/* Add PendingInternshipModal */}
+                <PendingInternshipModal 
+                    isOpen={isPendingModalOpen && activePendingModal === 'internship'} 
+                    onClose={() => setIsPendingModalOpen(false)}
+                    title="Pending Internship Request"
+                    pendingData={[]} 
+                />
+                <PendingInHouseModal 
+                    isOpen={isPendingModalOpen && activePendingModal === 'inhouse'} 
+                    onClose={() => setIsPendingModalOpen(false)}
+                    title="Pending In-House Activity Request"
+                    pendingData={[]} 
+                 />
+                 <PendingOffCampusModal 
+                    isOpen={isPendingModalOpen && activePendingModal === 'offcampus'} 
+                    onClose={() => setIsPendingModalOpen(false)}
+                    title="Pending Off-Campus Activity Request"
+                    pendingData={[]} 
+                 />
             </main>
 
             <footer>
