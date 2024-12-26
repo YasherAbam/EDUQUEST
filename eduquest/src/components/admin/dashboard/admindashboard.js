@@ -9,6 +9,7 @@ import PendingInternshipModal from '../modal/internship_pending';
 import PendingInHouseModal from '../modal/inhouse_pending';
 import PendingOffCampusModal from '../modal/offcampus_pending';
 import InHouseModal from '../modal/inhouse';
+import OffCampusModal from '../modal/offcampus';
 
 
 
@@ -425,6 +426,16 @@ const AdminDashboard = () => {
                     }}
                     title={modalTitle}
                  />
+                {/* Off-Campus Modal */}
+                <OffCampusModal 
+                    isOpen={isModalOpen && activeModal === 'offcampus'}
+                    onClose={() => {
+                        setIsModalOpen(false);
+                        setActiveModal(null);
+                    }}
+                    title={modalTitle}
+                    data={internshipData}  
+                />
                 {/* Notification Modal */}
                 <NotificationModal 
                     isOpen={isNotificationModalOpen} 

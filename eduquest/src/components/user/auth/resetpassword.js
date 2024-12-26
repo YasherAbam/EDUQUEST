@@ -7,169 +7,177 @@ import '../../../styles/user/auth/resetpassword.css';
 
 function ResetPassword() {
     const navigate = useNavigate();
-    const [showSuccessModal, setShowSuccessModal] = useState(false);  // Add this
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [formData, setFormData] = useState({
-      newPassword: '',
-      confirmPassword: ''
+        newPassword: '',
+        confirmPassword: ''
     });
-  const [passwordRequirements, setPasswordRequirements] = useState({
-    length: false,
-    uppercase: false,
-    lowercase: false,
-    number: false,
-    special: false
-  });
-  const [message, setMessage] = useState({ text: '', type: '' });
-  const [isLoading, setIsLoading] = useState(false);
-
-  // Password validation function
-  const validatePassword = (password) => {
-    setPasswordRequirements({
-      length: password.length >= 8,
-      uppercase: /[A-Z]/.test(password),
-      lowercase: /[a-z]/.test(password),
-      number: /[0-9]/.test(password),
-      special: /[^A-Za-z0-9]/.test(password)
+    const [passwordRequirements, setPasswordRequirements] = useState({
+        length: false,
+        uppercase: false,
+        lowercase: false,
+        number: false,
+        special: false
     });
-  };
+    const [message, setMessage] = useState({ text: '', type: '' });
+    const [isLoading, setIsLoading] = useState(false);
 
-  // Check if all password requirements are met
-  const isPasswordValid = (password) => {
-    return password.length >= 8 &&
-           /[A-Z]/.test(password) &&
-           /[a-z]/.test(password) &&
-           /[0-9]/.test(password) &&
-           /[^A-Za-z0-9]/.test(password);
-  };
+    // Password validation function
+    const validatePassword = (password) => {
+        setPasswordRequirements({
+            length: password.length >= 8,
+            uppercase: /[A-Z]/.test(password),
+            lowercase: /[a-z]/.test(password),
+            number: /[0-9]/.test(password),
+            special: /[^A-Za-z0-9]/.test(password)
+        });
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (formData.newPassword !== formData.confirmPassword) {
-      setMessage({ text: 'Passwords do not match', type: 'error' });
-      return;
-    }
+    // Check if all password requirements are met
+    const isPasswordValid = (password) => {
+        return password.length >= 8 &&
+               /[A-Z]/.test(password) &&
+               /[a-z]/.test(password) &&
+               /[0-9]/.test(password) &&
+               /[^A-Za-z0-9]/.test(password);
+    };
 
-    if (!isPasswordValid(formData.newPassword)) {
-      setMessage({ text: 'Please meet all password requirements', type: 'error' });
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setShowSuccessModal(true);  // Replace setMessage with this
-      
-      // Redirect to login page after 2 seconds
-      setTimeout(() => {
-        navigate('/login');
-      }, 2000);
-      
-    } catch (error) {
-      setMessage({ text: 'Failed to reset password', type: 'error' });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Update password validation on input change
-  useEffect(() => {
-    validatePassword(formData.newPassword);
-  }, [formData.newPassword]);
-
-  return (
-    <div className="resetpassword-container">
-      <div className="resetpassword-form-box">
-        <div className="logo">
-          <img src={logo} alt="EduQuest Logo" />
-          <h2>EduQuest</h2>
-        </div>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         
-        <h3>Reset Password</h3>
+        if (formData.newPassword !== formData.confirmPassword) {
+            setMessage({ text: 'Passwords do not match', type: 'error' });
+            return;
+        }
 
-        <form onSubmit={handleSubmit}>
-          <div className="instruction">
-            <p>Create a new password for your account.</p>
-          </div>
+        if (!isPasswordValid(formData.newPassword)) {
+            setMessage({ text: 'Please meet all password requirements', type: 'error' });
+            return;
+        }
 
-          <div className="input-group">
-                <input
-                    type="password"
-                    value={formData.newPassword}
-                    onChange={(e) => setFormData({...formData, newPassword: e.target.value})}
-                    placeholder="New Password"
-                    required
-                />
+        setIsLoading(true);
+
+        try {
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            setShowSuccessModal(true); // Show the success modal
+            
+        } catch (error) {
+            setMessage({ text: 'Failed to reset password', type: 'error' });
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Update password validation on input change
+    useEffect(() => {
+        validatePassword(formData.newPassword);
+    }, [formData.newPassword]);
+
+    return (
+        <div className="login-container">
+            <div className="login-form-box">
+                <div className="login-header">
+                    <div className="logo-container">
+                        <img src={logo} alt="EduQuest Logo" className="logo-image" />
+                    </div>
+                    <h1 className="app-title">EduQuest</h1>
+                    <h2 className="page-title">Reset Password</h2>
+                </div>
+
+                {message.text && (
+                    <div className={`error-message ${message.type}`} role="alert">
+                        <span>{message.text}</span>
+                    </div>
+                )}
+
+                <form onSubmit={handleSubmit} noValidate>
+                    <div className="input-group">
+                        <input
+                            type="password"
+                            placeholder="New Password"
+                            value={formData.newPassword}
+                            onChange={(e) => setFormData({...formData, newPassword: e.target.value})}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            value={formData.confirmPassword}
+                            onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                            required
+                        />
+                    </div>
+
+                    <div className="password-requirements">
+                        <p>Password must contain:</p>
+                        <ul>
+                            <li className={passwordRequirements.length ? 'valid' : ''}>
+                                At least 8 characters
+                            </li>
+                            <li className={passwordRequirements.uppercase ? 'valid' : ''}>
+                                One uppercase letter
+                            </li>
+                            <li className={passwordRequirements.lowercase ? 'valid' : ''}>
+                                One lowercase letter
+                            </li>
+                            <li className={passwordRequirements.number ? 'valid' : ''}>
+                                One number
+                            </li>
+                            <li className={passwordRequirements.special ? 'valid' : ''}>
+                                One special character
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        className="submit-btn"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Resetting...' : 'Reset Password'}
+                    </button>
+
+                    <div className="form-footer">
+                        <p>Remember your password? <Link to="/login">Back to Login</Link></p>
+                    </div>
+                </form>
             </div>
 
-            <div className="input-group">
-                <input
-                    type="password"
-                    value={formData.confirmPassword}
-                    onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
-                    placeholder="Confirm Password"
-                    required
-                />
-                <Modal show={showSuccessModal} onHide={() => setShowSuccessModal(false)}>
-                <Modal.Header closeButton>
-                <Modal.Title>Password Reset Successful</Modal.Title>
-                </Modal.Header>
+            {/* Success Modal */}
+            <Modal 
+                show={showSuccessModal} 
+                onHide={() => setShowSuccessModal(false)}
+                centered
+                className="forgot-modal success"
+                backdrop="static"
+                keyboard={false}
+            >
                 <Modal.Body>
-                Your password has been reset successfully.
+                    <div className="status-icon success">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6L9 17L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </div>
+                    <h5 className="modal-title">Password Reset Successful</h5>
+                    <p className="modal-message">Your password has been reset successfully.</p>
+                    <Button 
+                        className="btn-action"
+                        onClick={() => {
+                            setShowSuccessModal(false);
+                            navigate('/login'); // Navigate to login when closing the modal
+                        }}
+                    >
+                        Close
+                    </Button>
                 </Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={() => setShowSuccessModal(false)}>
-                Close
-                </Button>
-                </Modal.Footer>
-                 </Modal>
-            </div>
-
-          <div className="password-requirements">
-            <p>Password must contain:</p>
-            <ul>
-              <li className={passwordRequirements.length ? 'valid' : ''}>
-                At least 8 characters
-              </li>
-              <li className={passwordRequirements.uppercase ? 'valid' : ''}>
-                One uppercase letter
-              </li>
-              <li className={passwordRequirements.lowercase ? 'valid' : ''}>
-                One lowercase letter
-              </li>
-              <li className={passwordRequirements.number ? 'valid' : ''}>
-                One number
-              </li>
-              <li className={passwordRequirements.special ? 'valid' : ''}>
-                One special character
-              </li>
-            </ul>
-          </div>
-
-          {message.text && (
-            <div className={`message ${message.type}`}>
-              {message.text}
-            </div>
-          )}
-
-          <button 
-            type="submit" 
-            className="submit-btn"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Resetting...' : 'Reset Password'}
-          </button>
-        </form>
-
-        <div className="form-footer">
-          <p>Remember your password? <Link to="/login">Back to Login</Link></p>
+            </Modal>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default ResetPassword;

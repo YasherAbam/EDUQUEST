@@ -285,194 +285,240 @@
     color: #004085;
 }
 
-/* Revision Modal Overlay */
-.revision-modal-overlay {
+/* Inhouse Revision Modal Styles */
+.inhouse-revision-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1001; /* Higher than details modal */
+    z-index: 1000;
     backdrop-filter: blur(5px);
 }
 
-/* Revision Modal Content */
-.revision-modal-content {
-    background: #ffffff;
-    border-radius: 12px; /* Rounded corners */
+.inhouse-revision-modal-content {
+    background: white;
+    padding: 0;
+    border-radius: 8px;
     width: 90%;
-    max-width: 700px; /* Increased max-width for better visibility */
-    padding: 40px; /* Increased padding for a more spacious feel */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack children vertically */
-    transition: transform 0.3s ease; /* Smooth transition */
+    max-width: 450px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Modal Animation */
-.revision-modal-overlay.show .revision-modal-content {
-    transform: scale(1.05); /* Slightly scale up on show */
-}
-
-/* Heading */
-.revision-modal-content h4 {
-    margin: 0 0 20px; /* Increased margin for better spacing */
-    color: #333;
-    font-size: 1.8rem; /* Increased font size for better readability */
-}
-
-/* Label */
-.revision-modal-content label {
-    display: block;
-    margin-bottom: 12px; /* Increased margin for better spacing */
-    color: #555;
-}
-
-/* Textarea */
-.revision-modal-content textarea {
-    width: 100%;
-    height: 200px; /* Increased height for better visibility */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 15px; /* Increased padding for comfort */
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.2s ease;
-    resize: none; /* Prevent resizing */
-}
-
-/* Textarea Focus State */
-.revision-modal-content textarea:focus {
-    border-color: var(--moss-green);
-    outline: none;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.25);
-}
-
-/* Action Buttons */
-.revision-modal-content .action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 30px; /* Increased margin for better spacing */
-}
-
-.send-button, .cancel-button {
+.inhouse-revision-modal-header {
     background-color: var(--moss-green);
-    color: white;
-    border: none;
-    padding: 12px 24px; /* Increased padding for buttons */
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
-    font-size: 1rem; /* Increased font size for better readability */
-}
-
-/* Button Hover Effects */
-.send-button:hover, .cancel-button:hover {
-    background-color: darkgreen;
-    transform: translateY(-2px); /* Lift effect on hover */
-}
-
-/* Button Active State */
-.send-button:active, .cancel-button:active {
-    transform: translateY(1px); /* Pressed effect */
-}
-
-/* Issue Modal Overlay */
-/* Issue Modal Overlay */
-.issue-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    z-index: 1001;
-    backdrop-filter: blur(5px);
 }
 
-/* Issue Modal Content */
-.issue-modal-content {
-    background: #ffffff;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-/* Labels and Textarea */
-label {
-    margin-bottom: 8px;
-    color: #555;
+.inhouse-revision-modal-header h4 {
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
-textarea {
+.inhouse-revision-modal-body {
+    padding: 20px;
+}
+
+.inhouse-revision-modal-content textarea {
     width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    min-height: 100px;
     padding: 12px;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    transition: border-color 0.3s ease;
-}
-
-textarea:focus {
-    border-color: var(--moss-green);
-    outline: none;
-}
-
-/* Upload Section */
-.upload-section {
-    margin: 20px 0;
-}
-
-.upload-label {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 1px dashed #ccc;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    text-align: center;
-    color: #555;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 14px;
+    resize: vertical;
+    transition: all 0.2s ease;
+    margin-bottom: 20px;
 }
 
-.upload-label:hover {
-    background-color: #f8f9fa;
+.inhouse-revision-modal-content textarea:focus {
+    outline: none;
+    border-color: var(--moss-green);
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.1);
 }
 
-/* Action Buttons */
-.action-buttons {
+.inhouse-modal-buttons {
     display: flex;
     justify-content: flex-end;
+    gap: 10px;
     margin-top: 20px;
 }
 
-.submit-button,
-.cancel-button {
+.inhouse-modal-buttons .send-button {
+    padding: 8px 24px;
     background-color: var(--moss-green);
     color: white;
     border: none;
-    padding: 12px 20px;
     border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 1rem;
+    transition: all 0.2s ease;
 }
 
-.submit-button:hover,
-.cancel-button:hover {
-    background-color: darkgreen;
+.inhouse-modal-buttons .send-button:hover {
+    background-color: #1e7e34;
+    transform: translateY(-1px);
+}
+
+.inhouse-modal-buttons .cancel-button {
+    padding: 8px 24px;
+    background-color: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.inhouse-modal-buttons .cancel-button:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: translateY(-1px);
+}
+
+
+/* Issue Modal Styles */
+.inhouse-issue-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.inhouse-issue-modal-content {
+    background: white;
+    padding: 0;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.inhouse-issue-modal-header {
+    background-color: var(--moss-green);
+    padding: 15px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inhouse-issue-modal-header h4 {
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.inhouse-issue-modal-body {
+    padding: 20px;
+}
+
+.inhouse-issue-modal-body .form-group {
+    margin-bottom: 20px;
+}
+
+.inhouse-issue-modal-body label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.inhouse-issue-modal-body textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+    transition: all 0.2s ease;
+    margin-bottom: 20px;
+}
+
+.inhouse-issue-modal-body textarea:focus {
+    outline: none;
+    border-color: var(--moss-green);
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.1);
+}
+
+.upload-area {
+    border: 2px dashed #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upload-area:hover {
+    border-color: var(--moss-green);
+    color: var(--moss-green);
+    background-color: rgba(40, 167, 69, 0.05);
+}
+
+.inhouse-issue-modal-body .inhouse-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.inhouse-issue-modal-body .send-button {
+    padding: 8px 24px;
+    background-color: var(--moss-green);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.inhouse-issue-modal-body .send-button:hover {
+    background-color: #1e7e34;
+    transform: translateY(-1px);
+}
+
+.inhouse-issue-modal-body .cancel-button {
+    padding: 8px 24px;
+    background-color: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.inhouse-issue-modal-body .cancel-button:hover {
+    background-color: #dc3545;
+    color: white;
     transform: translateY(-1px);
 }

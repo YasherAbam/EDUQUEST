@@ -1,4 +1,4 @@
-.compliance-modal-overlay {
+.internship-compliance-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
     backdrop-filter: blur(5px);
 }
 
-.compliance-modal-content {
+.internship-compliance-content {
     background: #ffffff;
     border-radius: 16px; /* Increased border radius for a softer look */
     width: 90%;
@@ -35,9 +35,9 @@
     }
 }
 
-.compliance-modal-header {
+.internship-compliance-header {
     padding: 16px 24px;
-    background-color: var(--moss-green);
+    background-color: #2F5440;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -46,7 +46,7 @@
     border-top-right-radius: 16px;
 }
 
-.compliance-close-button {
+.internship-compliance-close {
     background: none;
     border: none;
     color: white;
@@ -62,13 +62,13 @@
     opacity: 0.9;
 }
 
-.compliance-close-button:hover {
+.internship-compliance-close:hover {
     transform: rotate(180deg);
     background-color: rgba(255, 255, 255, 0.15);
     opacity: 1;
 }
 
-.compliance-modal-body {
+.internship-compliance-body {
     padding: 20px 24px;
     color: #333;
     font-size: 1rem; /* Match font size with details modal */
@@ -76,7 +76,7 @@
     font-family: 'YourFontFamily', sans-serif; /* Ensure the same font family */
 }
 
-.compliance-highlighted-section {
+.internship-compliance-highlighted-section {
     background-color: #e8f5e9; /* Soft green background for a calming effect */
     border-radius: 8px;
     padding: 12px; /* Reduced padding for a more compact look */
@@ -121,7 +121,7 @@
     color: #555; /* Darker text color for better contrast */
 }
 
-.compliance-item {
+.internship-compliance-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -132,7 +132,7 @@
     background-color: #f8f9fa;
 }
 
-.compliance-item span {
+.internship-compliance-item span {
     flex: 1; /* Allow the text to take available space */
     font-size: 1rem; /* Match font size */
     color: #333; /* Darker text color for better contrast */
@@ -156,25 +156,25 @@
     background-color: #e2e6ea; /* Slightly darker on hover */
 }
 
-.status-options {
+.internship-compliance-options {
     margin: 20px 0;
 }
 
-.status-options label {
+.internship-compliance-options label {
     margin-right: 15px;
     font-size: 1rem; /* Match font size */
 }
 
-.note-section {
+.internship-compliance-note {
     margin: 20px 0;
 }
 
-.note-section label {
+.internship-compliance-note label {
     display: block;
     margin-bottom: 8px;
 }
 
-.note-section textarea {
+.internship-compliance-note textarea {
     width: 100%;
     height: 80px;
     border: 1px solid #ccc;
@@ -184,8 +184,8 @@
     transition: border-color 0.3s ease, box-shadow 0.2s ease;
 }
 
-.note-section textarea:focus {
-    border-color: var(--moss-green);
+.internship-compliance-note textarea:focus {
+    border-color: #2F5440;
     outline: none;
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.25);
 }
@@ -196,43 +196,20 @@
 }
 
 .forward-status-button {
-    background-color: var(--moss-green);
+    background-color: #2F5440;
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem; /* Increased font size */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.forward-status-button:hover {
-    background-color: darkgreen;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+/* Responsive Design */
+@media (max-width: 576px) {
+    .internship-compliance-content {
+        width: 95%;
+        margin: 16px;
+    }
 
-/* Custom scrollbar styles */
-.compliance-modal-content::-webkit-scrollbar {
-    width: 6px;
-}
-
-.compliance-modal-content::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 3px;
-}
-
-.compliance-modal-content::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 3px;
-}
-
-.compliance-modal-content::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
-}
-
-/* Button focus states */
-.update-status-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+    .internship-compliance-options {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
 }

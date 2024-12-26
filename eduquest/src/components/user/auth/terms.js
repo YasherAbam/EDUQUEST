@@ -27,16 +27,21 @@ function Terms() {
   return (
     <div className="terms-container">
       <div className="terms-form-box">
-        <div className="logo">
-          <img src={logo} alt="EduQuest Logo" />
-          <h2>EduQuest</h2>
+        <div className="terms-header">
+          <div className="terms-logo-container">
+            <img 
+              src={logo} 
+              alt="EduQuest Logo" 
+              className="terms-logo-image"
+            />
+          </div>
+          <h1 className="terms-title">EduQuest</h1>
+          <h2 className="terms-page-title">Terms and Conditions</h2>
         </div>
         
-        <h3>Terms and Conditions</h3>
-        
         <div className="terms-content">
-          <div className="section">
-            <h4>1. Acceptance of Terms</h4>
+          <div className="terms-section">
+            <h3>1. Acceptance of Terms</h3>
             <p>By accessing and using EduQuest, you agree to be bound by these Terms and Conditions.</p>
             <ul>
               <li>You must be at least 18 years old to use this service</li>
@@ -45,8 +50,8 @@ function Terms() {
             </ul>
           </div>
 
-          <div className="section">
-            <h4>2. User Responsibilities</h4>
+          <div className="terms-section">
+            <h3>2. User Responsibilities</h3>
             <p>As a user of EduQuest, you agree to:</p>
             <ul>
               <li>Use the platform for educational purposes only</li>
@@ -56,8 +61,8 @@ function Terms() {
             </ul>
           </div>
 
-          <div className="section">
-            <h4>3. Privacy Policy</h4>
+          <div className="terms-section">
+            <h3>3. Privacy Policy</h3>
             <p>We are committed to protecting your privacy:</p>
             <ul>
               <li>Personal information is collected and stored securely</li>
@@ -66,8 +71,8 @@ function Terms() {
             </ul>
           </div>
 
-          <div className="section">
-            <h4>4. Content Usage</h4>
+          <div className="terms-section">
+            <h3>4. Content Usage</h3>
             <p>Regarding content on EduQuest:</p>
             <ul>
               <li>All materials are for educational use only</li>
@@ -77,45 +82,52 @@ function Terms() {
           </div>
         </div>
 
-        <div className="buttons">
-          <Button className="accept-btn" onClick={handleAccept}>
-            Accept
-          </Button>
-          <Button className="decline-btn" onClick={handleDecline}>
-            Decline
-          </Button>
+        <div className="terms-actions">
+          <button className="terms-accept-btn" onClick={handleAccept}>
+            <span>Accept</span>
+          </button>
+          <button className="terms-decline-btn" onClick={handleDecline}>
+            <span>Decline</span>
+          </button>
         </div>
       </div>
 
       {/* Accept Modal */}
-      <Modal show={showAcceptModal} onHide={() => setShowAcceptModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Terms & Conditions Accepted</Modal.Title>
-        </Modal.Header>
+      <Modal 
+        show={showAcceptModal} 
+        onHide={() => setShowAcceptModal(false)}
+        centered
+        className="terms-modal success"
+      >
         <Modal.Body>
-          Terms & Conditions accepted successfully.
+          <div className="status-icon success">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6L9 17L4 12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <h5 className="modal-title">Terms Accepted</h5>
+          <p className="modal-message">Redirecting you to sign up...</p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowAcceptModal(false)}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
 
       {/* Decline Modal */}
-      <Modal show={showDeclineModal} onHide={() => setShowDeclineModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Terms & Conditions Declined</Modal.Title>
-        </Modal.Header>
+      <Modal 
+        show={showDeclineModal} 
+        onHide={() => setShowDeclineModal(false)}
+        centered
+        className="terms-modal error"
+      >
         <Modal.Body>
-          You must accept the Terms & Conditions to continue.
+          <div className="status-icon error">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 8v4m0 4h.01M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <h5 className="modal-title">Terms Declined</h5>
+          <p className="modal-message">Redirecting you to login...</p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowDeclineModal(false)}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
+      
     </div>
   );
 }

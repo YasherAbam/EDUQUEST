@@ -35,47 +35,40 @@
 }
 
 .internship-modal-header h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-size: 1.5rem; /* Match inhouse header font size */
+    font-weight: 600; /* Match inhouse header font weight */
+    letter-spacing: 0.5px; /* Match inhouse header letter spacing */
 }
 
 .internship-modal-body {
-    padding: 32px 40px;
+    padding: 24px 32px; /* Match inhouse body padding */
 }
 
 .internship-modal-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    padding: 0;
+    gap: 32px;
 }
 
 .internship-modal-column {
-    background: transparent;
-    padding: 0;
-    border: none;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
 }
 
 .internship-modal-column h4 {
-    color: #2c3e50;
-    font-size: 1.3rem;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #e9ecef;
-    font-weight: 600;
+    font-size: 1.25rem; /* Match inhouse column header font size */
+    color: #2c3e50; /* Match inhouse column header color */
+    margin-bottom: 20px; /* Match inhouse margin */
+    padding-bottom: 12px; /* Match inhouse padding */
+    border-bottom: 2px solid #eee; /* Match inhouse border */
 }
 
 .department-item {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
-    background-color: #f8f9fa;
-    border-radius: 12px;
-    margin-bottom: 16px;
-    transition: all 0.3s ease;
-    border: 1px solid #e9ecef;
+    align-items: center;
+    padding: 12px 0;
 }
 
 .department-item:hover {
@@ -107,19 +100,14 @@
 }
 
 .department-info span {
-    font-size: 1rem;
-    color: #2c3e50;
-    font-weight: 500;
+    font-size: 1rem; /* Match inhouse department info font size */
+    color: #2c3e50; /* Match inhouse department info color */
+    font-weight: 500; /* Match inhouse department info font weight */
 }
 
 .status-badge {
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
+    font-size: 0.85rem; /* Match inhouse status badge font size */
+    font-weight: 500; /* Match inhouse status badge font weight */
 }
 
 .status-pending {
@@ -169,7 +157,7 @@
     transform: rotate(180deg);
     background-color: rgba(255, 255, 255, 0.15);
     opacity: 1;
-}
+}   
 
 /* Custom scrollbar styles */
 .internship-modal-content::-webkit-scrollbar {

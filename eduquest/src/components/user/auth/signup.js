@@ -17,8 +17,6 @@ const courses = [
   "BS Chemical Engineering",
   "BS Criminology",
   "BS Nursing",
-  
-
   // Add more courses as needed
 ].sort();
 
@@ -82,19 +80,27 @@ function Signup() {
     return emailRegex.test(email);
   };
 
-  
-
   return (
     <div className="signup-container">
-    <div className="signup-form-box">
-      <div className="signup-logo">
-        <img src={logo} alt="EduQuest Logo" />
-        <h2 className="signup-logo-text">EduQuest</h2>
-      </div>
+      <div className="signup-form-box">
+        <div className="signup-logo">
+          <img 
+            src={logo} 
+            alt="EduQuest Logo" 
+            className="logo-image"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = 'fallback-logo.png';
+            }}
+          />
+          <h2 className="signup-logo-text">EduQuest</h2>
+        </div>
         
-      <h3>SIGN UP</h3> 
+        <div className="signup-header">
+          <h3 className="page-title">SIGN UP</h3>
+        </div>
         
-      {error && <div className="signup-error-message">{error}</div>}
+        {error && <div className="signup-error-message">{error}</div>}
         
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="input-group fullname">
@@ -109,22 +115,22 @@ function Signup() {
           </div>
           <div className="input-group">
             <input
-            type="number"
-            id="studentNo"
-            placeholder="Student No."
-            value={formData.studentNo}
-            onChange={(e) => {
-              // Only allow numeric input
-              const value = e.target.value.replace(/[^0-9]/g, '');
-              setFormData(prevData => ({
-                ...prevData,
-                studentNo: value
-              }));
-            }}
-            required
-            min="0"
-            pattern="[0-9]*"
-            inputMode="numeric"
+              type="number"
+              id="studentNo"
+              placeholder="Student No."
+              value={formData.studentNo}
+              onChange={(e) => {
+                // Only allow numeric input
+                const value = e.target.value.replace(/[^0-9]/g, '');
+                setFormData(prevData => ({
+                  ...prevData,
+                  studentNo: value
+                }));
+              }}
+              required
+              min="0"
+              pattern="[0-9]*"
+              inputMode="numeric"
             />
           </div>
           <div className="input-group">
@@ -163,25 +169,25 @@ function Signup() {
               required
             />
           </div>
-                <div className="input-group password-group">
-              <input
-                  type="password"
-                  id="password"
-                  placeholder="Password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-              />
+          <div className="input-group password-group">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="input-group confirm-password-group">
-              <input
-                  type="password"
-                  id="confirmPassword"
-                  placeholder="Confirm Password"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  required
-              />
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="terms-checkbox">
             <label>

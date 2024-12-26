@@ -8,6 +8,7 @@ const InHouseDetailsModal = ({ isOpen, onClose, activityData }) => {
     const [revisionNote, setRevisionNote] = useState('');
     const [issueNote, setIssueNote] = useState('');
     const [files, setFiles] = useState([]);
+    const [selectedFiles, setSelectedFiles] = useState([]);
 
     // Check if activityData is available and has the required properties
     if (!activityData || !activityData.name) {
@@ -40,6 +41,7 @@ const InHouseDetailsModal = ({ isOpen, onClose, activityData }) => {
         console.log(issueNote, files);
         setShowIssueModal(false);
     };
+
 
     return (
         <div className="details-modal-overlay" style={{ display: isOpen ? 'flex' : 'none' }}>
@@ -96,53 +98,71 @@ const InHouseDetailsModal = ({ isOpen, onClose, activityData }) => {
             </div>
 
             {showRevisionModal && (
-                <div className="revision-modal-overlay">
-                    <div className="revision-modal-content">
-                        <h4>For Revision</h4>
-                        <label>Note:</label>
-                        <textarea
-                            placeholder="Enter your message here..."
-                            value={revisionNote}
-                            onChange={(e) => setRevisionNote(e.target.value)}
-                        />
-                        <div className="action-buttons">
-                            <button className="send-button" onClick={handleRevise}>Send</button>
-                            <button className="cancel-button" onClick={() => setShowRevisionModal(false)}>Cancel</button>
-                        </div>
-                    </div>
+    <div className="inhouse-revision-modal-overlay">
+        <div className="inhouse-revision-modal-content">
+            <div className="inhouse-revision-modal-header">
+                <h4>Revision Note</h4>
+            </div>
+            <div className="inhouse-revision-modal-body">
+                <textarea
+                    value={revisionNote}
+                    onChange={(e) => setRevisionNote(e.target.value)}
+                    placeholder="Enter revision note..."
+                />
+                <div className="inhouse-modal-buttons">
+                    <button className="send-button" onClick={handleRevise}>Send</button>
+                    <button className="cancel-button" onClick={() => setShowRevisionModal(false)}>Cancel</button>
                 </div>
-            )}
+            </div>
+        </div>
+    </div>
+)}
 
-            {showIssueModal && (
-                <div className="issue-modal-overlay">
-                    <div className="issue-modal-content">
-                        <h4>Requirements (In-House Activity)</h4>
-                        <label>Note:</label>
-                        <textarea
-                            placeholder="Enter your message here..."
-                            value={issueNote}
-                            onChange={(e) => setIssueNote(e.target.value)}
-                        />
-                        <label>Upload Files:</label>
-                        <div className="upload-section">
-                            <input
-                                type="file"
-                                multiple
-                                onChange={handleFileChange}
-                                style={{ display: 'none' }}
-                                id="file-upload"
-                            />
-                            <label htmlFor="file-upload" className="upload-label">
-                                Click here to upload files...
-                            </label>
-                        </div>
-                        <div className="action-buttons">
-                            <button className="submit-button" onClick={handleIssueSubmit}>Submit</button>
-                            <button className="cancel-button" onClick={() => setShowIssueModal(false)}>Cancel</button>
-                        </div>
-                    </div>
+{showIssueModal && (
+    <div className="inhouse-issue-modal-overlay">
+        <div className="inhouse-issue-modal-content">
+            <div className="inhouse-issue-modal-header">
+                <h4>Requirements (In-House Activity)</h4>
+            </div>
+            <div className="inhouse-issue-modal-body">
+                <div className="form-group">
+                    <label>Note:</label>
+                    <textarea
+                        placeholder="Enter your message here..."
+                        value={issueNote}
+                        onChange={(e) => setIssueNote(e.target.value)}
+                    />
                 </div>
-            )}
+                <div className="form-group">
+                    <label>Upload Files:</label>
+                    <input
+                        type="file"
+                        multiple
+                        onChange={handleFileChange}
+                        style={{ display: 'none' }}
+                        id="file-upload"
+                    />
+                    <label htmlFor="file-upload" className="upload-area">
+                        Click here to upload files...
+                    </label>
+                    {selectedFiles.length > 0 && (
+                        <div className="selected-files">
+                            {Array.from(selectedFiles).map((file, index) => (
+                                <div key={index} className="file-item">
+                                    {file.name}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+                <div className="inhouse-modal-buttons">
+                    <button className="send-button" onClick={handleIssueSubmit}>Submit</button>
+                    <button className="cancel-button" onClick={() => setShowIssueModal(false)}>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+)}
         </div>
     );
 };

@@ -13,6 +13,7 @@ import AdminHelp from './components/admin/system/adminhelp';
 import AdminPrivacy from './components/admin/system/adminprivacy';
 import AdminTerms from './components/admin/system/adminterms';
 import UserDashboard from './components/user/dashboard/userdashboard';
+import Admin2Dashboard from './components/admin2/dashboard2/admin2dashboard';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/privacy" element={<AdminPrivacy />} />
         <Route path="/terms" element={<AdminTerms />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/admin2-dashboard" element={<Admin2Dashboard />} />
         
         {/* 404 catch-all route */}
         <Route path="*" element={

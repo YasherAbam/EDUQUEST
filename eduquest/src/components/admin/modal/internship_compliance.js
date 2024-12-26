@@ -1,8 +1,8 @@
 import React from 'react';
-import './inhouse_compliance.css'; // CSS for styling
-import { FaFileDownload, FaEye, FaRegFileAlt } from 'react-icons/fa'; // Importing the new file icon
+import './internship_compliance.css'; 
+import { FaEye, FaRegFileAlt } from 'react-icons/fa';
 
-const InHouseCompliance = ({ isOpen, onClose, reportName, requesterDetails }) => {
+const InternshipCompliance = ({ isOpen, onClose, requesterDetails }) => {
     if (!isOpen) return null;
 
     const handleView = (fileUrl) => {
@@ -76,4 +76,12 @@ const InHouseCompliance = ({ isOpen, onClose, reportName, requesterDetails }) =>
     );
 };
 
-export default InHouseCompliance;
+InternshipCompliance.defaultProps = {
+    requesterDetails: {
+        department: '',
+        activity: '',
+        date: ''
+    }
+};
+
+export default InternshipCompliance;
